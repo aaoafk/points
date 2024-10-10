@@ -1,0 +1,10 @@
+<div class="container mx-auto px-4" data-controller="points">
+  <h1 class="text-6xl font-bold mb-12 text-center text-game-yellow font-honk animate-pulse">
+			Fast Points System
+  </h1>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <%= render partial: 'name_card', collection: @names, as: :name %>
+  </div>
+</div>
+
