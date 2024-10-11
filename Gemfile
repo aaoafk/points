@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby file: ".ruby-version"
+
 # Use specific branch of Rails
 gem "rails", github: "rails/rails", branch: 'main'
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -52,3 +54,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "solid_cable", "~> 3.0"

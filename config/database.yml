@@ -4,6 +4,10 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem "sqlite3"
 #
+# idle_timeout should be set to zero, to avoid recycling sqlite connections
+# and losing the page cache
+# 
+
 default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -11,22 +15,21 @@ default: &default
 
 development:
   <<: *default
-  database: storage/development.sqlite3
+  database: sotrage/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: storage/test.sqlite3
+  database: sotrage/test.sqlite3
 
-
-# SQLite3 write its data on the local filesystem, as such it requires
-# persistent disks. If you are deploying to a managed service, you should
-# make sure it provides disk persistence, as many don't.
+# Warning: Make sure your production database path is on a persistent
+# volume, otherwise your application data could be deleted between deploys.
 #
-# Similarly, if you deploy your application as a Docker container, you must
-# ensure the database is located in a persisted volume.
+# You may also set the Litesupport.root in production via the
+# `LITESTACK_DATA_PATH` environment variable.
 production:
   <<: *default
   # database: path/to/persistent/storage/production.sqlite3
+
