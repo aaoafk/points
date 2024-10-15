@@ -58,3 +58,5 @@ end
 gem "dockerfile-rails", ">= 1.6", :group => :development
 
 gem "solid_cable", "~> 3.0"
+
+gem "solid_queue", "~> 1.0"

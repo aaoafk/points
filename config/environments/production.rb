@@ -57,7 +57,9 @@ Rails.application.configure do
   config.cache_store = :litecache
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter = :resque
+  config.active_job.queue_adapter = :solid_queue
+  config.solid_queue.connects_to = { database: { writing: :queue } }
+
   # config.active_job.queue_name_prefix = "points_production"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
