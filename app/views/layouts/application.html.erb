@@ -15,8 +15,8 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-		<%= turbo_refreshes_with method: :morph, scroll: :preserve %>
-		<%= content_for :head %>
+		<%= turbo_refreshes_with(method: :morph, scroll: :preserve) %>
+		<%= yield :head %>
 
 		<!-- Add these lines to include the Google Fonts -->
 		<link href="https://fonts.googleapis.com/css2?family=Honk&family=Bungee+Spice&display=swap" rel="stylesheet">

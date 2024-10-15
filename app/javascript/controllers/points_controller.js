@@ -36,13 +36,21 @@ export default class extends Controller {
   }
 
   updateServer(nameId, newValue) {
-    fetch(`/names/${nameId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
-      },
-      body: JSON.stringify({ name: { points: newValue } })
-    })
+			// Updates UI
+			const rootTemplate = document.querySelector('#turbo-stream-template-points-counter');
+			const turboStreamElement = rootTemplate.content.cloneNode(true);
+			const spanElement = turboStreamElement.querySelector('template').content.querySelector('#name--points');
+			spanElement.innerHTML = newValue;
+			document.body.querySelector(`#name_${nameId}`).appendChild(turboStreamElement);
+
+			// Need to update the server using fetch API
+			fetch(`/names/${nameId}`, {
+					method: "PATCH",
+					headers: {
+							'Content-Type': 'application/json',
+							'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+					},
+					body: JSON.stringify({id: nameId, name: { points: newValue }})
+			});
   }
 }

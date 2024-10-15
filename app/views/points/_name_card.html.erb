@@ -4,7 +4,7 @@
 		</div>
 		<div class="mb-6 text-xl font-honk">
 				<span class="font-lg font-bold text-game-green">Points: </span>
-				<span data-points-target="value" class="text-game-yellow text-3xl"><%= name.points %></span>
+				<span id="name--points" data-points-target="value" class="text-game-yellow text-3xl"><%= name.points %></span>
 		</div>
 		<div class="flex justify-center space-x-8">
 				<button data-action="click->points#increment" class="bg-game-green hover:bg-green-600 text-black font-bold py-4 px-8 rounded-full text-4xl transition duration-300 font-honk transform hover:scale-110 shadow-lg">
@@ -15,3 +15,4 @@
 				</button>
 		</div>
 </div>
+

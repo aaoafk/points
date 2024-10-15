@@ -3,9 +3,17 @@
 			Fast Points System
   </h1>
   
+	<%= turbo_stream_from "names" %>
 	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 			<%= render partial: 'name_card', collection: @names, as: :name %>
 	</div>
-	<%= turbo_stream_from("names") %>
+
+	<template id="turbo-stream-template-points-counter">
+			<turbo-stream action="replace" target="name--points">
+					<template>
+							<span id="name--points" data-points-target="value" class="text-game-yellow text-3xl"></span>
+					</template>
+			</turbo-stream>
+	</template>
 </div>
 
