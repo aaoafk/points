@@ -14,8 +14,16 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: storage/development.sqlite3
+  primary: &primary_dev
+    <<: *default
+    database: storage/development.sqlite3
+  cable:
+    <<: *primary_dev
+    migration_paths: db/cable_migrate
+  queue:
+    <<: *primary_dev
+    migration_paths: db/queue_migrate
+  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,6 +35,16 @@ test:
 # Warning: Make sure your production database path is on a persistent
 # volume, otherwise your application data could be deleted between deploys.
 production:
-  <<: *default
-  # database: path/to/persistent/storage/production.sqlite3
-
+  primary: &primary_production
+    <<: *default
+    database: path/to/persistent/storage/production.sqlite3
+    username: app
+    password: <%= ENV["APP_DATABASE_PASSWORD"] %>
+  cable:
+    <<: *primary_production
+    database: app_production_cable
+    migrations_paths: db/cable_migrate
+  queue:
+    <<: *primary_production
+    database: path/to/persistent/storage/production.sqlite3
+    migration_paths: db/queue_migrate

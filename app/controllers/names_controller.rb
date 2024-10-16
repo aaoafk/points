@@ -2,7 +2,7 @@ class NamesController < ApplicationController
   def update
     @name = Name.find(params[:id])
     if @name.update(name_params)
-      head :partial_content
+      render 'points/index'
     else
       head :unprocessable_entity
     end
