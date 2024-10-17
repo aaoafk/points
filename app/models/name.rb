@@ -1,3 +1,3 @@
 class Name < ApplicationRecord
-  broadcasts_refreshes
+  broadcasts_refreshes :name
 end

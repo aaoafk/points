@@ -38,8 +38,8 @@ production:
   primary: &primary_production
     <<: *default
     database: path/to/persistent/storage/production.sqlite3
-    username: app
-    password: <%= ENV["APP_DATABASE_PASSWORD"] %>
+    # username: app
+    # password: <%= ENV["APP_DATABASE_PASSWORD"] %>
   cable:
     <<: *primary_production
     database: app_production_cable

@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby file: ".ruby-version"
 
 # Use specific branch of Rails
-gem "rails", github: "rails/rails", branch: 'main'
+gem "rails", github: "rails/rails", branch: '7-2-stable'
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record

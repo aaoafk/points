@@ -1,4 +1,4 @@
-class CreateNames < ActiveRecord::Migration[8.0]
+class CreateNames < ActiveRecord::Migration[7.2]
   def change
     create_table :names do |t|
       t.string :first_name

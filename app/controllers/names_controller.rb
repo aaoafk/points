@@ -1,10 +1,16 @@
 class NamesController < ApplicationController
+  def index
+  end
+
   def update
     @name = Name.find(params[:id])
-    if @name.update(name_params)
-      render 'points/index'
-    else
-      head :unprocessable_entity
+    respond_to do |format| 
+      if @name.update(name_params)
+        format.html { redirect_to root_url, status: 303 }
+        format.json { redirect_to root_url, status: 200, location: @name }
+      else
+        head :unprocessable_entity
+      end
     end
   end
 
