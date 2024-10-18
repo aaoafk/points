@@ -35,5 +35,6 @@ module Points
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    # config.enhanced_sqlite3.isolate_connection_pools = true
   end
 end
