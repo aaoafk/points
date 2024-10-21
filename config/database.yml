@@ -14,23 +14,36 @@ default: &default
   timeout: 5000
 
 development:
-  primary: &primary_dev
+  primary: &primary
     <<: *default
     database: storage/development.sqlite3
-  cable:
-    <<: *primary_dev
+    migration_paths: db/application_migrate
+  cable: &cable
+    <<: *default
     database: storage/cable.sqlite3
     migration_paths: db/cable_migrate
-  queue:
-    <<: *primary_dev
+  queue: &queue
+    <<: *default
     database: storage/queue.sqlite3
     migration_paths: db/queue_migrate
-  reader:
-    <<: *primary_dev
+  primary_reader:
+    <<: *primary
     readonly: true
-  writer:
-    <<: *primary_dev
-    pool: 3
+  primary_writer:
+    <<: *primary
+    readonly: true
+  queue_reader:
+    <<: *queue
+    readonly: true
+  queue_writer:
+    <<: *queue
+    pool: 1
+  cable_reader:
+    <<: *cable
+    readonly: true
+  cable_writer:
+    <<: *cable
+    pool: 1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -48,16 +61,16 @@ production:
     # username: app
     # password: <%= ENV["APP_DATABASE_PASSWORD"] %>
   cable:
-    <<: *primary_production
+    <<: *default
     database: path/to/persistent/storage/cable.sqlite3
     migrations_paths: db/cable_migrate
   queue:
-    <<: *primary_production
+    <<: *default
     database: path/to/persistent/storage/production.sqlite3
     migration_paths: db/queue_migrate
-  reader:
-    <<: *primary_production
-    readonly: true
-  writer:
-    <<: *primary_production
-    pool: 1
+  # reader:
+  #   <<: *primary_production
+  #   readonly: true
+  # writer:
+  #   <<: *primary_production
+  #   pool: 1
