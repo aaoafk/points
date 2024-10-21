@@ -62,5 +62,3 @@ gem "solid_queue", "~> 1.0"
 gem "activerecord-enhancedsqlite3-adapter", "~> 0.8.0"
 
 gem "solid_cable", "~> 3.0"
-
-gem "redis", "~> 5.3"
