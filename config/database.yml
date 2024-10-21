@@ -1,4 +1,4 @@
-# SQLite. Versions 3.8.0 and up are supported.
+# SQLite. Versions 38.0 and up are supported.
 #   gem install sqlite3
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
@@ -17,33 +17,18 @@ development:
   primary: &primary
     <<: *default
     database: storage/development.sqlite3
-    migration_paths: db/application_migrate
   cable: &cable
     <<: *default
-    database: storage/cable.sqlite3
-    migration_paths: db/cable_migrate
+    database: storage/development.sqlite3
   queue: &queue
     <<: *default
-    database: storage/queue.sqlite3
-    migration_paths: db/queue_migrate
-  primary_reader:
-    <<: *primary
-    readonly: true
-  primary_writer:
-    <<: *primary
-    readonly: true
-  queue_reader:
-    <<: *queue
-    readonly: true
-  queue_writer:
-    <<: *queue
-    pool: 1
-  cable_reader:
-    <<: *cable
-    readonly: true
-  cable_writer:
-    <<: *cable
-    pool: 1
+    database: storage/development.sqlite3
+  # reader:
+  #   <<: *primary
+  #   readonly: true
+  # writer:
+  #   <<: *primary
+  #   pool: 3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -57,17 +42,13 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: path/to/persistent/storage/production.sqlite3
-    # username: app
-    # password: <%= ENV["APP_DATABASE_PASSWORD"] %>
+    database: sqlite3:///data/production.sqlite3
   cable:
     <<: *default
-    database: path/to/persistent/storage/cable.sqlite3
-    migrations_paths: db/cable_migrate
+    database: sqlite3:///data/production.sqlite3
   queue:
     <<: *default
-    database: path/to/persistent/storage/production.sqlite3
-    migration_paths: db/queue_migrate
+    database: sqlite3:///data/production.sqlite3
   # reader:
   #   <<: *primary_production
   #   readonly: true

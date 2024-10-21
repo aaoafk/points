@@ -5,4 +5,4 @@ import { createConsumer } from "@rails/actioncable"
 
 export default createConsumer()
 
-consumer.subscriptions.create({channel: "PointsChannel"})
+// consumer.subscriptions.create({channel: "PointsChannel"})
