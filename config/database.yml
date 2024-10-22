@@ -17,10 +17,10 @@ development:
   primary: &primary
     <<: *default
     database: storage/development.sqlite3
-  cable: &cable
+  cable:
     <<: *default
     database: storage/development.sqlite3
-  queue: &queue
+  queue:
     <<: *default
     database: storage/development.sqlite3
   # reader:

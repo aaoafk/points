@@ -11,25 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.1].define(version: 2024_10_18_143955) do
-  create_table "names", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "points", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "solid_cable_messages", force: :cascade do |t|
-    t.binary "channel", limit: 1024, null: false
-    t.binary "payload", limit: 536870912, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "channel_hash", limit: 8, null: false
-    t.index ["channel"], name: "index_solid_cable_messages_on_channel"
-    t.index ["channel_hash"], name: "index_solid_cable_messages_on_channel_hash"
-    t.index ["created_at"], name: "index_solid_cable_messages_on_created_at"
-  end
-
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
