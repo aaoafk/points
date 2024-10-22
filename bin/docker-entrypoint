@@ -7,7 +7,10 @@ fi
 
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+  ./bin/rails db:create:primary # Create the database
+  ./bin/rails db:migrate:primary # Migrate names
+  ./bin/rails db:schema:load:cable # Load schema for cable
+  ./bin/rails db:schema:load:queue # Load schema for queue
 fi
 
 exec "${@}"
