@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.3.0"
 
 # Use specific branch of Rails
-gem "rails", github: "rails/rails", branch: 'main'
+gem "rails", github: "rails/rails", branch: "main"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
@@ -55,10 +55,12 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
+gem "dockerfile-rails", ">= 1.6", group: :development
 
 gem "solid_queue", "~> 1.0"
 
 gem "activerecord-enhancedsqlite3-adapter", "~> 0.8.0"
 
 gem "solid_cable", "~> 3.0"
+
+gem "rack-mini-profiler", "~> 3.3"

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: eb7cd90230ff960940459811c2acacfe75a6daed
+  revision: fe0fb9fdf04f638996e785d3e291f5fe8bc138a0
   branch: main
   specs:
     actioncable (8.1.0.alpha)
@@ -210,6 +210,8 @@ GEM
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.1.8)
+    rack-mini-profiler (3.3.1)
+      rack (>= 1.2.0)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -346,6 +348,7 @@ DEPENDENCIES
   jsbundling-rails
   propshaft
   puma (>= 5.0)
+  rack-mini-profiler (~> 3.3)
   rails!
   rubocop-rails-omakase
   selenium-webdriver
