@@ -6,8 +6,8 @@ class NamesController < ApplicationController
     @name = Name.find(params[:id])
     respond_to do |format| 
       if @name.update(name_params)
-        format.html { redirect_to root_url, status: 303 }
-        format.json { redirect_to root_url, status: 200, location: @name }
+        format.html { }
+        format.json { }
       else
         head :unprocessable_entity
       end
