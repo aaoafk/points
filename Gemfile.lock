@@ -347,7 +347,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   propshaft
-  puma (>= 5.0)
+  puma
   rack-mini-profiler (~> 3.3)
   rails!
   rubocop-rails-omakase

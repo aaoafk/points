@@ -41,13 +41,6 @@ export default class extends Controller {
 	}
 
 	updateServer(nameId, newValue) {
-		// Updates UI
-		const rootTemplate = document.querySelector('#turbo-stream-template-points-counter');
-		const turboStreamElement = rootTemplate.content.cloneNode(true);
-		const spanElement = turboStreamElement.querySelector('template').content.querySelector('#name--points');
-		spanElement.innerHTML = newValue;
-		document.body.querySelector(`#name_${nameId}`).appendChild(turboStreamElement);
-
 		// Update the Server using fetch API
 		fetch(`/names/${nameId}`, {
 			method: "PATCH",
